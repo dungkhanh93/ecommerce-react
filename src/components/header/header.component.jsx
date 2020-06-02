@@ -1,9 +1,10 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
-import "./header.style.scss";
-import { ReactComponent as Logo } from "../../assets/logo.svg";
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.utils';
+import './header.style.scss';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 
-const Header = () => (
+const Header = ({ currentUser }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <Logo className="logo" />
@@ -15,6 +16,15 @@ const Header = () => (
       <NavLink exact className="option" to="/pages/contact">
         Contact
       </NavLink>
+      {currentUser ? (
+        <div className="option" onClick={() => auth.signOut()}>
+          Sign Out
+        </div>
+      ) : (
+        <NavLink exact className="option" to="/signin">
+          SignIn
+        </NavLink>
+      )}
     </div>
   </div>
 );

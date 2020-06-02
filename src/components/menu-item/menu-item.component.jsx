@@ -1,10 +1,10 @@
-import React from "react";
-import "./menu-item.style.scss";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import './menu-item.style.scss';
+import { withRouter } from 'react-router-dom';
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <div
-    className={`menu-item ${size ? size : ""}`}
+    className={`menu-item ${size ? size : ''}`}
     onClick={() => history.push(`${match.url}${linkUrl}`)}
   >
     <div
